@@ -1,69 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sherwin's Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta n            <h1 class="font-display text-4xl md:text-6xl font-extrabold text-white mb-2">Hi, I'm Sherwin</h1>
+            <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-6"></div>
+            <p class="text-white/90 text-lg leading-relaxed mb-6">I love learning new things and building fun projects. I may be a rookie, but I'm passionate about coding and always improving!</p>
+            <p class="text-amber-300 text-xl font-medium mb-8">I love eating food <a class="underline decoration-amber-300/50 hover:decoration-amber-300 transition-all" href="https://rexanwong.xyz" target="_blank" rel="noopener">(my friend's site)</a>!</p>="description" content="Sherwin's portfolio – projects, about me, and how to get in touch. Ocean-inspired smooth scrolling experience." />
+    <title>Sherwin | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Arial'],
+              display: ['Poppins', 'Inter', 'ui-sans-serif']
+            },
+            colors: {
+              ocean1: '#0ea5e9', // cyan-500
+              ocean2: '#0284c7', // sky-600
+              sand: '#fef3c7',   // amber-100
+            },
+            keyframes: {
+              swim: {
+                '0%':   { transform: 'translateX(-15%) translateY(0)' },
+                '50%':  { transform: 'translateX(50vw) translateY(-10px)' },
+                '100%': { transform: 'translateX(115vw) translateY(0)' }
+              },
+              swimReverse: {
+                '0%':   { transform: 'translateX(115vw) translateY(0) scaleX(-1)' },
+                '50%':  { transform: 'translateX(50vw) translateY(-8px) scaleX(-1)' },
+                '100%': { transform: 'translateX(-15vw) translateY(0) scaleX(-1)' }
+              },
+              bob: {
+                '0%,100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-8px)' }
+              },
+              wave1: {
+                '0%,100%': { transform: 'translateX(0) translateY(0)' },
+                '50%': { transform: 'translateX(-25px) translateY(-10px)' }
+              },
+              wave2: {
+                '0%,100%': { transform: 'translateX(0) translateY(0)' },
+                '50%': { transform: 'translateX(30px) translateY(-15px)' }
+              },
+              wave3: {
+                '0%,100%': { transform: 'translateX(0) translateY(0)' },
+                '50%': { transform: 'translateX(-15px) translateY(-5px)' }
+              },
+              float: {
+                '0%,100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' }
+              },
+              bubble: {
+                '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+                '10%': { opacity: '1' },
+                '90%': { opacity: '1' },
+                '100%': { transform: 'translateY(-100px) scale(1)', opacity: '0' }
+              }
+            },
+            animation: {
+              swimSlow: 'swim 35s linear infinite',
+              swimMed: 'swim 25s linear infinite',
+              swimFast: 'swim 15s linear infinite',
+              swimReverseSlow: 'swimReverse 40s linear infinite',
+              swimReverseMed: 'swimReverse 30s linear infinite',
+              bob: 'bob 4s ease-in-out infinite',
+              wave1: 'wave1 8s ease-in-out infinite',
+              wave2: 'wave2 12s ease-in-out infinite',
+              wave3: 'wave3 6s ease-in-out infinite',
+              float: 'float 6s ease-in-out infinite',
+              bubbleRise: 'bubble 8s linear infinite'
+            }
+          }
         }
-        h1 {
-            color: #333;
-        }
-        h3 {
-            color: #555;
-        }
-        ul {
-            list-style-type: square;
-            margin: 10px 0;
-        }
-        footer {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
+      }
+    </script>
+  </head>
+  <body class="font-sans text-slate-800 overflow-x-hidden">
+    <!-- Animated Ocean Background -->
+    <div aria-hidden="true" class="fixed inset-0 -z-20">
+      <!-- Deep ocean gradient from surface to depths -->
+      <div class="absolute inset-0 bg-gradient-to-b from-sky-200 via-blue-300 via-blue-500 to-blue-900"></div>
+      
+      <!-- Animated wave layers for movement -->
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-200/40 via-transparent to-transparent motion-safe:animate-wave1"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-200/30 via-transparent to-transparent motion-safe:animate-wave2"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-sky-100/20 via-transparent to-transparent motion-safe:animate-wave3"></div>
+      </div>
+      
+      <!-- Light caustics and depth effects -->
+      <div class="absolute inset-0 opacity-30">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] motion-safe:animate-float"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3),transparent_70%)] motion-safe:animate-wave1"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2),transparent_70%)] motion-safe:animate-wave2"></div>
+      </div>
+    </div>
 
-<body>
-    <h1>Sherwin</h1>
-    <p>Hello, this is my website!</p>
-    <h3>I like cheese, I like food</h3>
-    <p>Yeet!</p>
+    <!-- Floating bubbles -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
+      <div class="absolute bottom-0 left-[10%] w-2 h-2 bg-white/40 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 0s"></div>
+      <div class="absolute bottom-0 left-[25%] w-1 h-1 bg-white/30 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 2s"></div>
+      <div class="absolute bottom-0 left-[60%] w-3 h-3 bg-white/25 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 4s"></div>
+      <div class="absolute bottom-0 left-[80%] w-1.5 h-1.5 bg-white/35 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 6s"></div>
+    </div>
+    <!-- Swimming fish ecosystem -->
+    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
+      <!-- Surface fish (bright and small) -->
+      <svg class="absolute top-20 left-[-20%] h-8 w-14 text-cyan-500/80 motion-safe:animate-swimMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 2s">
+        <path d="M22 16c0 5 7 8 16 8 6 0 12-2 16-5-4-3-10-5-16-5-9 0-16 3-16 8z"/>
+        <circle cx="46" cy="14" r="2" fill="white"/>
+        <circle cx="46" cy="14" r="1" fill="black"/>
+        <path d="M8 16l8-4v8z"/>
+      </svg>
+      
+      <!-- Mid-depth fish (medium size, slower) -->
+      <svg class="absolute top-1/3 left-[-25%] h-12 w-20 text-blue-400/70 motion-safe:animate-swimSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 8s">
+        <path d="M20 16c0 6 8 10 18 10 7 0 14-3 18-6-4-3-11-6-18-6-10 0-18 4-18 10z"/>
+        <circle cx="50" cy="14" r="2.5" fill="white"/>
+        <circle cx="50" cy="14" r="1.2" fill="black"/>
+        <path d="M6 16l10-6v12z"/>
+        <path d="M52 20l8-3v6z" opacity="0.7"/>
+      </svg>
 
-    <h3>Hobbies</h3>
-    <ul>
-        <li>Football</li>
-        <li>Reading</li>
-        <li>Music</li>
-    </ul>
+      <!-- Deep fish (larger, darker) -->
+      <svg class="absolute bottom-1/4 left-[-30%] h-16 w-24 text-blue-600/60 motion-safe:animate-swimSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 15s">
+        <path d="M18 16c0 7 9 12 20 12 8 0 16-4 20-7-4-3-12-7-20-7-11 0-20 5-20 12z"/>
+        <circle cx="50" cy="13" r="3" fill="white"/>
+        <circle cx="50" cy="13" r="1.5" fill="black"/>
+        <path d="M4 16l12-7v14z"/>
+        <path d="M52 22l10-4v8z" opacity="0.8"/>
+      </svg>
 
-    <h3>Favorite Foods</h3>
-    <ul>
-        <li>Pizza</li>
-        <li>Burgers</li>
-        <li>Pasta</li>
-    </ul>
+      <!-- Reverse swimming fish for variety -->
+      <svg class="absolute top-2/3 right-[-20%] h-10 w-16 text-teal-500/70 motion-safe:animate-swimReverseMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 5s">
+        <path d="M26 16c0 5 7 8 16 8 6 0 12-2 16-5-4-3-10-5-16-5-9 0-16 3-16 8z"/>
+        <circle cx="18" cy="14" r="2" fill="white"/>
+        <circle cx="18" cy="14" r="1" fill="black"/>
+        <path d="M56 16l-8-4v8z"/>
+      </svg>
 
-    <h3>Contact Me</h3>
-    <p>Email: sherwin@example.com</p>
+      <!-- Small school fish -->
+      <svg class="absolute top-1/2 left-[-15%] h-6 w-10 text-sky-400/80 motion-safe:animate-swimFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12s">
+        <path d="M20 16c0 3 5 6 12 6 4 0 8-1 10-3-3-2-6-3-10-3-7 0-12 2-12 6z"/>
+        <circle cx="40" cy="14" r="1.5" fill="white"/>
+        <circle cx="40" cy="14" r="0.8" fill="black"/>
+        <path d="M8 16l6-3v6z"/>
+      </svg>
+      
+      <svg class="absolute top-1/2 left-[-12%] h-5 w-8 text-sky-400/80 motion-safe:animate-swimFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12.5s">
+        <path d="M22 16c0 2 4 5 10 5 3 0 6-1 8-2-2-1-5-2-8-2-6 0-10 1-10 4z"/>
+        <circle cx="38" cy="15" r="1.2" fill="white"/>
+        <circle cx="38" cy="15" r="0.6" fill="black"/>
+        <path d="M10 16l5-2v4z"/>
+      </svg>
 
-    <img src="https://main-site-product-360.youtooz.com/r2023-production/2d2f1t/0.jpg" alt="Image" />
+      <!-- Deep bottom fish (very slow, large) -->
+      <svg class="absolute bottom-8 left-[-35%] h-20 w-32 text-indigo-700/50 motion-safe:animate-swimReverseSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 20s">
+        <path d="M16 16c0 8 10 14 22 14 9 0 18-5 22-8-4-3-13-8-22-8-12 0-22 6-22 14z"/>
+        <circle cx="52" cy="12" r="3.5" fill="white"/>
+        <circle cx="52" cy="12" r="1.8" fill="black"/>
+        <path d="M2 16l14-8v16z"/>
+        <path d="M54 24l12-5v10z" opacity="0.9"/>
+      </svg>
+    </div>
 
-    <footer>
-        <p>&copy; 2025 Sherwin. All rights reserved.</p>
+    <!-- Top Navigation -->
+    <header class="sticky top-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav class="container mx-auto px-6 py-4 flex items-center justify-center gap-4">
+        <button id="btn-about" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
+          onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About Me</button>
+        <button id="btn-projects" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
+          onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Projects</button>
+        <button id="btn-contacts" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
+          onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">Contacts</button>
+      </nav>
+    </header>
+
+    <main class="snap-y snap-mandatory">
+      <!-- About Section / Hero -->
+  <section id="about" class="snap-start min-h-screen flex items-center scroll-mt-24">
+        <div class="container mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
+            <h1 class="font-display text-4xl md:text-5xl font-extrabold text-slate-900">Hi, I’m Sherwin</h1>
+            <p class="mt-4 text-slate-600 text-lg leading-8">I love learning new things and building fun projects. I may be a rookie, but I'm passionate about coding and always improving!</p>
+            <p class="mt-6 text-amber-600 text-xl">I love eating food <a class="underline decoration-amber-400 hover:text-amber-700" href="https://rexanwong.xyz" target="_blank" rel="noopener">(my friend's site)</a>!</p>
+            <div class="flex gap-4">
+              <a href="#projects" class="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">See Projects</a>
+              <a href="#contacts" class="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm text-white px-8 py-3 font-semibold border border-white/30 hover:bg-white/30 transition-all duration-300">Contact Me</a>
+            </div>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-4 border border-white/20 shadow-2xl">
+              <img class="max-w-xs md:max-w-sm rounded-2xl" src="asset/Cheese.png" alt="Sherwin enjoying cheese" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] leading-[0]" aria-hidden="true">
+        <svg viewBox="0 0 1440 100" class="w-full h-[100px]"><path d="M0,40 C480,120 960,0 1440,80 L1440,100 L0,100 Z" class="fill-sky-100"/></svg>
+      </div>
+
+      <!-- Projects -->
+      <section id="projects" class="snap-start min-h-screen flex items-center scroll-mt-24">
+        <div class="container mx-auto px-8">
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">Projects</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+              <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div class="text-4xl mb-4">🍕</div>
+                <h3 class="text-xl font-semibold text-white mb-3">Pizza Project</h3>
+                <p class="text-white/80 leading-relaxed">I created an app that determines the best toppings for your pizza.</p>
+              </article>
+              <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div class="text-4xl mb-4">⚽</div>
+                <h3 class="text-xl font-semibold text-white mb-3">Football Game</h3>
+                <p class="text-white/80 leading-relaxed">I created a game where you can play football as any player you want.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] leading-[0]" aria-hidden="true">
+        <svg viewBox="0 0 1440 100" class="w-full h-[100px]"><path d="M0,80 C480,0 960,120 1440,40 L1440,100 L0,100 Z" class="fill-cyan-100"/></svg>
+      </div>
+
+      <!-- Contact -->
+      <section id="contacts" class="snap-start min-h-screen flex items-center scroll-mt-24">
+        <div class="container mx-auto px-8">
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">Contact</h2>
+            <div class="space-y-6">
+              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30">
+                <p class="text-white/90 text-lg">
+                  <span class="font-semibold">Email:</span> 
+                  <a class="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-300/50 hover:decoration-cyan-200 transition-all ml-2" href="mailto:sherwin@email.com">sherwin@email.com</a>
+                </p>
+              </div>
+              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30">
+                <p class="text-white/90 text-lg">
+                  <span class="font-semibold">LinkedIn:</span> 
+                  <a class="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-300/50 hover:decoration-cyan-200 transition-all ml-2" href="#" target="_blank">linkedin.com/in/sherwin</a>
+                </p>
+              </div>
+              <div class="text-center pt-4">
+                <p class="text-white/80 text-lg">Feel free to reach out for collaboration or just to say hi 🌊</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Audio Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-8">
+        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto text-center">
+          <h2 class="font-display text-2xl md:text-3xl font-bold text-white mb-6">My Theme Song</h2>
+          <audio class="w-full max-w-xl mx-auto bg-white/20 rounded-xl" controls>
+            <source src="asset/sound.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black/20 backdrop-blur-lg border-t border-white/10 text-white py-8">
+      <div class="container mx-auto px-8 text-center">
+        <p class="text-white/80">© 2024 Sherwin's Portfolio. Template by Graham Budd - Cheers, mate 🤙</p>
+      </div>
     </footer>
-</body>
+    <button id="backToTop" aria-label="Back to top" class="hidden fixed bottom-6 right-6 h-14 w-14 rounded-full bg-white/20 backdrop-blur-lg text-white shadow-2xl hover:bg-white/30 hover:scale-110 transition-all duration-300 grid place-items-center border border-white/30 text-xl">↑</button>
 
+    <script>
+      // Back to top button visibility and behavior
+      const btn = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) btn.classList.remove('hidden');
+        else btn.classList.add('hidden');
+      });
+      btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Highlight active nav button based on section in view
+      const sections = [
+        { id: 'about', btn: document.getElementById('btn-about') },
+        { id: 'projects', btn: document.getElementById('btn-projects') },
+        { id: 'contacts', btn: document.getElementById('btn-contacts') },
+      ];
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const match = sections.find(s => s.id === entry.target.id);
+          if (!match) return;
+          if (entry.isIntersecting) {
+            sections.forEach(s => s.btn.classList.remove('ring-2','ring-white/70'));
+            match.btn.classList.add('ring-2','ring-white/70');
+            match.btn.setAttribute('aria-current','page');
+          }
+        })
+      }, { root: null, threshold: 0.6 });
+      sections.forEach(s => observer.observe(document.getElementById(s.id)));
+    </script>
+  </body>
 </html>
