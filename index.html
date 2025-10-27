@@ -3,13 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sherwin's portfolio – projects, about me, and how to get in touch. Ocean-inspired smooth scrolling experience." />
-    <title>Sherwin's Projects</title>
+    <meta name="description" content="Sherwin's Website – Space-themed portfolio showcasing projects, about me, and how to get in touch." />
+    <title>Sherwin's Website | Space Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
     <script>
       tailwind.config = {
         theme: {
@@ -19,267 +18,451 @@
               display: ['Poppins', 'Inter', 'ui-sans-serif']
             },
             colors: {
-              'space-purple': '#6366f1',
-              'space-blue': '#3b82f6', 
-              'space-pink': '#ec4899',
-              nebula: '#8b5cf6',
-              'cosmic-gold': '#fbbf24',
+              space1: '#0f0f23', // deeper space
+              space2: '#1a1a2e', // dark indigo
+              space3: '#16213e', // navy blue
+              nebula: '#7c3aed', // violet-600
+              starlight: '#fbbf24', // amber-400
+              cosmic: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                200: '#bae6fd',
+                300: '#7dd3fc',
+                400: '#38bdf8',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                700: '#0369a1',
+                800: '#075985',
+                900: '#0c4a6e',
+              }
+            },
+            backgroundImage: {
+              'gradient-cosmic': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              'gradient-space': 'linear-gradient(180deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%)',
+              'gradient-nebula': 'radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.3) 0%, transparent 50%)',
             },
             keyframes: {
               orbit: {
-                '0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
-                '100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' }
+                '0%':   { transform: 'translateX(-15%) translateY(0) rotate(0deg)' },
+                '50%':  { transform: 'translateX(50vw) translateY(-20px) rotate(180deg)' },
+                '100%': { transform: 'translateX(115vw) translateY(0) rotate(360deg)' }
               },
               orbitReverse: {
-                '0%': { transform: 'rotate(0deg) translateX(150px) rotate(0deg)' },
-                '100%': { transform: 'rotate(-360deg) translateX(150px) rotate(360deg)' }
-              },
-              rocketFly: {
-                '0%': { transform: 'translateX(-20%) translateY(10px) rotate(-10deg)' },
-                '50%': { transform: 'translateX(50vw) translateY(-50px) rotate(5deg)' },
-                '100%': { transform: 'translateX(120vw) translateY(20px) rotate(-5deg)' }
-              },
-              rocketFlyReverse: {
-                '0%': { transform: 'translateX(120vw) translateY(20px) rotate(185deg)' },
-                '50%': { transform: 'translateX(50vw) translateY(-30px) rotate(175deg)' },
-                '100%': { transform: 'translateX(-20vw) translateY(10px) rotate(190deg)' }
-              },
-              twinkle: {
-                '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
-                '50%': { opacity: '1', transform: 'scale(1.2)' }
-              },
-              starGlow: {
-                '0%, 100%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
-                '50%': { boxShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8)' }
-              },
-              nebulaDrift: {
-                '0%, 100%': { transform: 'translateX(0) translateY(0) rotate(0deg)' },
-                '33%': { transform: 'translateX(-30px) translateY(-20px) rotate(2deg)' },
-                '66%': { transform: 'translateX(20px) translateY(-10px) rotate(-1deg)' }
-              },
-              nebulaDrift2: {
-                '0%, 100%': { transform: 'translateX(0) translateY(0) rotate(0deg)' },
-                '33%': { transform: 'translateX(40px) translateY(-30px) rotate(-2deg)' },
-                '66%': { transform: 'translateX(-25px) translateY(-5px) rotate(1deg)' }
+                '0%':   { transform: 'translateX(115vw) translateY(0) scaleX(-1) rotate(0deg)' },
+                '50%':  { transform: 'translateX(50vw) translateY(-15px) scaleX(-1) rotate(-180deg)' },
+                '100%': { transform: 'translateX(-15vw) translateY(0) scaleX(-1) rotate(-360deg)' }
               },
               float: {
-                '0%, 100%': { transform: 'translateY(0px)' },
-                '50%': { transform: 'translateY(-20px)' }
+                '0%,100%': { transform: 'translateY(0) rotate(0deg)' },
+                '50%': { transform: 'translateY(-12px) rotate(5deg)' }
               },
-              shootingStar: {
-                '0%': { transform: 'translateX(-100px) translateY(-100px)', opacity: '0' },
-                '10%': { opacity: '1' },
-                '90%': { opacity: '1' },
-                '100%': { transform: 'translateX(100vw) translateY(100vh)', opacity: '0' }
+              pulse: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '.5' }
               },
-              planetSpin: {
-                '0%': { transform: 'rotate(0deg)' },
-                '100%': { transform: 'rotate(360deg)' }
+              glow: {
+                '0%, 100%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.3)' },
+                '50%': { boxShadow: '0 0 40px rgba(124, 58, 237, 0.6)' }
+              },
+              nebula1: {
+                '0%,100%': { transform: 'translateX(0) translateY(0) scale(1) rotate(0deg)' },
+                '33%': { transform: 'translateX(-30px) translateY(-20px) scale(1.1) rotate(120deg)' },
+                '66%': { transform: 'translateX(20px) translateY(-30px) scale(0.9) rotate(240deg)' }
+              },
+              nebula2: {
+                '0%,100%': { transform: 'translateX(0) translateY(0) scale(1) rotate(0deg)' },
+                '50%': { transform: 'translateX(40px) translateY(-25px) scale(0.9) rotate(180deg)' }
+              },
+              nebula3: {
+                '0%,100%': { transform: 'translateX(0) translateY(0) scale(1) rotate(0deg)' },
+                '50%': { transform: 'translateX(-20px) translateY(-10px) scale(1.05) rotate(-180deg)' }
+              },
+              drift: {
+                '0%,100%': { transform: 'translateY(0px) translateX(0px)' },
+                '25%': { transform: 'translateY(-20px) translateX(10px)' },
+                '50%': { transform: 'translateY(-30px) translateX(-5px)' },
+                '75%': { transform: 'translateY(-10px) translateX(-15px)' }
+              },
+              sparkle: {
+                '0%': { transform: 'scale(0) rotate(0deg)', opacity: '0' },
+                '50%': { transform: 'scale(1) rotate(180deg)', opacity: '1' },
+                '100%': { transform: 'scale(0) rotate(360deg)', opacity: '0' }
+              },
+              twinkle: {
+                '0%, 100%': { opacity: '0.3', transform: 'scale(0.8)' },
+                '50%': { opacity: '1', transform: 'scale(1.2)' }
+              },
+              planetOrbit1: {
+                '0%': { transform: 'rotate(0deg) translateX(120px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(120px) rotate(-360deg)' }
+              },
+              planetOrbit2: {
+                '0%': { transform: 'rotate(0deg) translateX(160px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(160px) rotate(-360deg)' }
+              },
+              planetOrbit3: {
+                '0%': { transform: 'rotate(0deg) translateX(200px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(200px) rotate(-360deg)' }
+              },
+              slideInUp: {
+                '0%': { transform: 'translateY(100px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              fadeInScale: {
+                '0%': { transform: 'scale(0.8)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
               }
             },
             animation: {
-              orbitSlow: 'orbit 60s linear infinite',
-              orbitMed: 'orbit 40s linear infinite', 
-              orbitFast: 'orbitReverse 25s linear infinite',
-              rocketSlow: 'rocketFly 45s linear infinite',
-              rocketMed: 'rocketFly 30s linear infinite',
-              rocketFast: 'rocketFly 20s linear infinite',
-              rocketReverseSlow: 'rocketFlyReverse 50s linear infinite',
-              rocketReverseMed: 'rocketFlyReverse 35s linear infinite',
-              twinkle: 'twinkle 3s ease-in-out infinite',
-              twinkleSlow: 'twinkle 6s ease-in-out infinite',
-              starGlow: 'starGlow 4s ease-in-out infinite',
-              nebulaDrift: 'nebulaDrift 15s ease-in-out infinite',
-              nebulaDrift2: 'nebulaDrift2 12s ease-in-out infinite',
+              orbitSlow: 'orbit 45s linear infinite',
+              orbitMed: 'orbit 35s linear infinite',
+              orbitFast: 'orbit 25s linear infinite',
+              orbitReverseSlow: 'orbitReverse 50s linear infinite',
+              orbitReverseMed: 'orbitReverse 40s linear infinite',
               float: 'float 6s ease-in-out infinite',
-              shootingStar: 'shootingStar 3s linear infinite',
-              planetSpin: 'planetSpin 20s linear infinite'
+              glow: 'glow 3s ease-in-out infinite',
+              nebula1: 'nebula1 20s ease-in-out infinite',
+              nebula2: 'nebula2 25s ease-in-out infinite',
+              nebula3: 'nebula3 15s ease-in-out infinite',
+              drift: 'drift 12s ease-in-out infinite',
+              sparkle: 'sparkle 4s ease-in-out infinite',
+              twinkle: 'twinkle 3s ease-in-out infinite alternate',
+              planetOrbit1: 'planetOrbit1 20s linear infinite',
+              planetOrbit2: 'planetOrbit2 30s linear infinite',
+              planetOrbit3: 'planetOrbit3 40s linear infinite',
+              slideInUp: 'slideInUp 0.8s ease-out',
+              fadeInScale: 'fadeInScale 0.6s ease-out'
             }
           }
         }
       }
     </script>
   </head>
-  <body class="font-sans text-slate-800 overflow-x-hidden">
-    <!-- Animated Space Background -->
+  <body class="font-sans text-slate-100 overflow-x-hidden">
+    <!-- Enhanced Animated Space Background -->
     <div aria-hidden="true" class="fixed inset-0 -z-20">
-      <!-- Deep space gradient from stars to void -->
-      <div class="absolute inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 via-black to-black"></div>
+      <!-- Multi-layer deep space gradient -->
+      <div class="absolute inset-0 bg-gradient-to-br from-space1 via-space2 to-space3"></div>
+      <div class="absolute inset-0 bg-gradient-nebula opacity-40"></div>
       
-      <!-- Animated nebula layers for cosmic movement -->
+      <!-- Enhanced animated nebula layers -->
       <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-b from-purple-500/20 via-transparent to-transparent motion-safe:animate-nebulaDrift"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-pink-500/15 via-transparent to-transparent motion-safe:animate-nebulaDrift2"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-400/10 via-transparent to-transparent motion-safe:animate-float"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-purple-500/30 via-violet-500/10 to-transparent motion-safe:animate-nebula1"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-indigo-400/20 via-blue-500/5 to-transparent motion-safe:animate-nebula2"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-pink-400/15 via-purple-400/5 to-transparent motion-safe:animate-nebula3"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-cyan-400/10 via-transparent to-transparent motion-safe:animate-drift"></div>
       </div>
       
-      <!-- Starfield and cosmic effects -->
+      <!-- Enhanced starfield with different sizes and colors -->
       <div class="absolute inset-0 opacity-80">
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3),transparent_70%)] motion-safe:animate-float"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.2),transparent_70%)] motion-safe:animate-nebulaDrift"></div>
-        <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.25),transparent_70%)] motion-safe:animate-nebulaDrift2"></div>
-      </div>
-      
-      <!-- Twinkling stars -->
-      <div class="absolute inset-0">
-        <div class="absolute top-20 left-[10%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 0s"></div>
-        <div class="absolute top-32 left-[25%] w-1.5 h-1.5 bg-white rounded-full motion-safe:animate-twinkleSlow" style="animation-delay: 1s"></div>
-        <div class="absolute top-40 left-[60%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 2s"></div>
-        <div class="absolute top-24 left-[80%] w-2 h-2 bg-white rounded-full motion-safe:animate-starGlow" style="animation-delay: 3s"></div>
-        <div class="absolute top-64 left-[15%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkleSlow" style="animation-delay: 4s"></div>
-        <div class="absolute top-80 left-[45%] w-1.5 h-1.5 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 5s"></div>
-        <div class="absolute top-96 left-[75%] w-1 h-1 bg-white rounded-full motion-safe:animate-starGlow" style="animation-delay: 6s"></div>
+        <!-- Large bright stars -->
+        <div class="absolute top-1/4 left-1/4 w-3 h-3 bg-white rounded-full motion-safe:animate-twinkle shadow-lg shadow-white/50"></div>
+        <div class="absolute top-1/3 right-1/4 w-2 h-2 bg-yellow-200 rounded-full motion-safe:animate-twinkle shadow-lg shadow-yellow-200/50" style="animation-delay: 1s"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-2.5 h-2.5 bg-blue-200 rounded-full motion-safe:animate-twinkle shadow-lg shadow-blue-200/50" style="animation-delay: 2s"></div>
+        <div class="absolute top-1/6 right-1/3 w-1.5 h-1.5 bg-purple-200 rounded-full motion-safe:animate-twinkle shadow-lg shadow-purple-200/50" style="animation-delay: 3s"></div>
+        <div class="absolute bottom-1/3 right-1/6 w-3 h-3 bg-pink-200 rounded-full motion-safe:animate-twinkle shadow-lg shadow-pink-200/50" style="animation-delay: 4s"></div>
+        <div class="absolute top-2/3 left-1/6 w-1.5 h-1.5 bg-cyan-200 rounded-full motion-safe:animate-twinkle shadow-lg shadow-cyan-200/50" style="animation-delay: 5s"></div>
+        <!-- Medium stars -->
+        <div class="absolute top-1/5 left-2/3 w-1 h-1 bg-white/80 rounded-full motion-safe:animate-twinkle" style="animation-delay: 0.5s"></div>
+        <div class="absolute bottom-1/5 right-2/3 w-1 h-1 bg-yellow-300/80 rounded-full motion-safe:animate-twinkle" style="animation-delay: 1.5s"></div>
+        <div class="absolute top-3/5 left-1/5 w-1 h-1 bg-blue-300/80 rounded-full motion-safe:animate-twinkle" style="animation-delay: 2.5s"></div>
+        <!-- Small stars -->
+        <div class="absolute top-1/8 right-1/8 w-0.5 h-0.5 bg-white/60 rounded-full motion-safe:animate-twinkle" style="animation-delay: 3.5s"></div>
+        <div class="absolute bottom-1/8 left-1/8 w-0.5 h-0.5 bg-purple-300/60 rounded-full motion-safe:animate-twinkle" style="animation-delay: 4.5s"></div>
       </div>
     </div>
 
-    <!-- Shooting stars -->
+    <!-- Floating space particles -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <div class="absolute top-[10%] left-[-5%] w-1 h-12 bg-gradient-to-b from-white to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 0s"></div>
-      <div class="absolute top-[30%] left-[-5%] w-0.5 h-8 bg-gradient-to-b from-cyan-300 to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 8s"></div>
-      <div class="absolute top-[60%] left-[-5%] w-1.5 h-16 bg-gradient-to-b from-pink-300 to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 15s"></div>
+      <div class="absolute top-0 left-[15%] w-1 h-1 bg-yellow-300/60 rounded-full motion-safe:animate-sparkle" style="animation-delay: 0s"></div>
+      <div class="absolute top-1/4 left-[35%] w-0.5 h-0.5 bg-white/40 rounded-full motion-safe:animate-sparkle" style="animation-delay: 2s"></div>
+      <div class="absolute top-1/2 left-[70%] w-1.5 h-1.5 bg-purple-300/50 rounded-full motion-safe:animate-sparkle" style="animation-delay: 4s"></div>
+      <div class="absolute bottom-1/4 left-[90%] w-1 h-1 bg-blue-300/50 rounded-full motion-safe:animate-sparkle" style="animation-delay: 6s"></div>
     </div>
-    <!-- Flying rockets and space objects -->
+    <!-- Floating spacecraft and satellites -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <!-- Rockets flying across space -->
-      <svg class="absolute top-20 left-[-20%] h-12 w-20 text-orange-400 motion-safe:animate-rocketMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 2s">
-        <path d="M10 16l20-8 20 8-20 8z"/>
-        <circle cx="45" cy="16" r="3" fill="#fbbf24"/>
-        <path d="M8 16l-6-2v4z" fill="#ef4444"/>
-        <path d="M8 16l-4-4v8z" fill="#f97316"/>
+      <!-- Spacecraft 1 -->
+      <svg class="absolute top-20 left-[-20%] h-8 w-16 text-purple-400/80 motion-safe:animate-orbitMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 2s">
+        <path d="M8 16l12-4h20l12 4-12 4H20z"/>
+        <circle cx="40" cy="16" r="3" fill="white" opacity="0.8"/>
+        <path d="M4 16l8-2v4z"/>
+        <path d="M52 16l8-2v4z"/>
       </svg>
       
-      <!-- Space station -->
-      <svg class="absolute top-1/3 left-[-25%] h-16 w-24 text-gray-300 motion-safe:animate-rocketSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 8s">
+      <!-- Satellite -->
+      <svg class="absolute top-1/3 left-[-25%] h-10 w-20 text-cyan-400/70 motion-safe:animate-orbitSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 8s">
         <rect x="20" y="12" width="24" height="8" rx="2"/>
-        <circle cx="32" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="1"/>
-        <rect x="15" y="14" width="6" height="4"/>
-        <rect x="43" y="14" width="6" height="4"/>
-        <circle cx="28" cy="16" r="1" fill="#fbbf24"/>
-        <circle cx="36" cy="16" r="1" fill="#fbbf24"/>
+        <path d="M16 16h8M40 16h8" stroke="currentColor" stroke-width="1"/>
+        <circle cx="32" cy="16" r="2" fill="yellow" opacity="0.9"/>
+        <path d="M10 10l6 6M48 10l6 6M10 22l6-6M48 22l6-6" stroke="currentColor" stroke-width="1"/>
+      </svg>
+
+      <!-- Space station -->
+      <svg class="absolute bottom-1/4 left-[-30%] h-12 w-24 text-indigo-400/60 motion-safe:animate-orbitSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 15s">
+        <circle cx="32" cy="16" r="8"/>
+        <path d="M24 16h16M32 8v16" stroke="white" stroke-width="1" opacity="0.7"/>
+        <rect x="12" y="14" width="8" height="4" rx="1"/>
+        <rect x="44" y="14" width="8" height="4" rx="1"/>
+        <circle cx="32" cy="16" r="3" fill="cyan" opacity="0.8"/>
+      </svg>
+
+      <!-- Asteroid Belt -->
+      <svg class="absolute top-2/3 right-[-20%] h-6 w-12 text-gray-400/70 motion-safe:animate-orbitReverseMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 5s">
+        <ellipse cx="32" cy="16" rx="18" ry="8"/>
+        <circle cx="28" cy="14" r="2" fill="gray-600"/>
+        <circle cx="36" cy="18" r="1.5" fill="gray-600"/>
+        <circle cx="32" cy="12" r="1" fill="gray-600"/>
+      </svg>
+
+      <!-- Additional Asteroids -->
+      <svg class="absolute top-1/4 left-[-18%] h-4 w-8 text-gray-500/60 motion-safe:animate-orbitMed" viewBox="0 0 32 16" fill="currentColor" style="animation-delay: 8s">
+        <ellipse cx="16" cy="8" rx="12" ry="6"/>
+        <circle cx="14" cy="7" r="1" fill="gray-700"/>
+        <circle cx="18" cy="9" r="0.5" fill="gray-700"/>
+      </svg>
+
+      <svg class="absolute bottom-1/3 left-[-25%] h-8 w-16 text-stone-400/80 motion-safe:animate-orbitSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 14s">
+        <ellipse cx="32" cy="16" rx="20" ry="10"/>
+        <circle cx="28" cy="14" r="2.5" fill="stone-600"/>
+        <circle cx="36" cy="18" r="2" fill="stone-600"/>
+        <circle cx="32" cy="12" r="1.5" fill="stone-600"/>
+        <circle cx="40" cy="16" r="1" fill="stone-600"/>
+      </svg>
+
+      <svg class="absolute top-1/6 right-[-22%] h-3 w-6 text-gray-600/50 motion-safe:animate-orbitReverseFast" viewBox="0 0 24 12" fill="currentColor" style="animation-delay: 3s">
+        <ellipse cx="12" cy="6" rx="8" ry="4"/>
+        <circle cx="10" cy="5" r="0.5" fill="gray-800"/>
+        <circle cx="14" cy="7" r="0.5" fill="gray-800"/>
+      </svg>
+
+      <svg class="absolute bottom-1/6 right-[-15%] h-5 w-10 text-slate-400/70 motion-safe:animate-orbitReverseMed" viewBox="0 0 40 20" fill="currentColor" style="animation-delay: 18s">
+        <ellipse cx="20" cy="10" rx="15" ry="7"/>
+        <circle cx="18" cy="9" r="1.5" fill="slate-600"/>
+        <circle cx="22" cy="11" r="1" fill="slate-600"/>
+        <circle cx="20" cy="7" r="0.8" fill="slate-600"/>
       </svg>
 
       <!-- UFO -->
-      <svg class="absolute bottom-1/4 left-[-30%] h-10 w-16 text-purple-400 motion-safe:animate-rocketSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 15s">
-        <ellipse cx="32" cy="20" rx="16" ry="6"/>
-        <ellipse cx="32" cy="16" rx="12" ry="4" fill="#8b5cf6"/>
-        <circle cx="28" cy="15" r="1" fill="#fbbf24"/>
-        <circle cx="32" cy="15" r="1" fill="#fbbf24"/>
-        <circle cx="36" cy="15" r="1" fill="#fbbf24"/>
-      </svg>
-
-      <!-- Satellite -->
-      <svg class="absolute top-2/3 right-[-20%] h-8 w-12 text-cyan-400 motion-safe:animate-rocketReverseMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 5s">
-        <rect x="28" y="14" width="8" height="4" rx="1"/>
-        <path d="M20 16l8-2v4z"/>
-        <path d="M44 16l-8-2v4z"/>
-        <circle cx="32" cy="16" r="1" fill="#fbbf24"/>
-      </svg>
-
-      <!-- Small asteroids -->
-      <svg class="absolute top-1/2 left-[-15%] h-4 w-6 text-gray-500 motion-safe:animate-rocketFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12s">
-        <circle cx="32" cy="16" r="8"/>
-        <circle cx="28" cy="14" r="2" fill="#6b7280"/>
-        <circle cx="36" cy="18" r="1.5" fill="#6b7280"/>
+      <svg class="absolute top-1/2 left-[-15%] h-6 w-14 text-green-400/80 motion-safe:animate-orbitFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12s">
+        <ellipse cx="32" cy="18" rx="16" ry="4"/>
+        <ellipse cx="32" cy="14" rx="10" ry="6"/>
+        <circle cx="28" cy="14" r="1" fill="yellow"/>
+        <circle cx="32" cy="14" r="1" fill="yellow"/>
+        <circle cx="36" cy="14" r="1" fill="yellow"/>
       </svg>
       
-      <svg class="absolute top-1/2 left-[-12%] h-3 w-5 text-gray-600 motion-safe:animate-rocketFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12.5s">
-        <circle cx="32" cy="16" r="6"/>
-        <circle cx="30" cy="15" r="1" fill="#4b5563"/>
+      <!-- Small probe -->
+      <svg class="absolute top-1/6 left-[-12%] h-4 w-8 text-yellow-400/80 motion-safe:animate-orbitFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12.5s">
+        <rect x="24" y="14" width="16" height="4" rx="2"/>
+        <path d="M20 16h4M40 16h4" stroke="currentColor" stroke-width="1"/>
+        <circle cx="32" cy="16" r="1" fill="red"/>
       </svg>
 
-      <!-- Large planet in distance -->
-      <svg class="absolute bottom-8 left-[-35%] h-24 w-24 text-indigo-600 motion-safe:animate-rocketReverseSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 20s">
-        <circle cx="32" cy="16" r="15"/>
-        <ellipse cx="32" cy="16" rx="15" ry="3" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.6"/>
-        <circle cx="28" cy="12" r="2" fill="#6366f1"/>
-        <circle cx="36" cy="18" r="1.5" fill="#6366f1"/>
-        <circle cx="30" cy="20" r="1" fill="#6366f1"/>
+      <!-- Large mothership -->
+      <svg class="absolute bottom-8 left-[-35%] h-16 w-32 text-purple-600/50 motion-safe:animate-orbitReverseSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 20s">
+        <ellipse cx="32" cy="20" rx="28" ry="6"/>
+        <ellipse cx="32" cy="12" rx="16" ry="8"/>
+        <path d="M16 20l8-4h16l8 4" stroke="white" stroke-width="1" opacity="0.5"/>
+        <circle cx="24" cy="20" r="1" fill="cyan"/>
+        <circle cx="32" cy="20" r="1" fill="cyan"/>
+        <circle cx="40" cy="20" r="1" fill="cyan"/>
+        <circle cx="32" cy="12" r="2" fill="yellow" opacity="0.8"/>
       </svg>
     </div>
 
-    <!-- Top Navigation -->
-    <header class="sticky top-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
-      <nav class="container mx-auto px-6 py-4 flex items-center justify-center">
-        <h1 class="text-2xl font-display font-bold text-white">Sherwin's Projects</h1>
+    <!-- Enhanced Top Navigation -->
+    <header class="sticky top-0 z-50 bg-black/30 backdrop-blur-xl border-b border-purple-500/30 shadow-lg shadow-purple-500/10">
+      <nav class="container mx-auto px-6 py-4 flex items-center justify-center gap-2">
+        <button id="btn-about" class="group relative overflow-hidden rounded-full bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-white hover:from-purple-500/40 hover:to-indigo-500/40 hover:shadow-2xl hover:shadow-purple-500/25 hover:scale-105 transition-all duration-500 px-8 py-3 text-sm font-semibold backdrop-blur-sm border border-purple-400/40 hover:border-purple-300/60"
+          onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+          <span class="relative z-10">About Me</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/20 to-purple-600/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+        </button>
+        <button id="btn-projects" class="group relative overflow-hidden rounded-full bg-gradient-to-r from-indigo-500/20 to-pink-500/20 text-white hover:from-indigo-500/40 hover:to-pink-500/40 hover:shadow-2xl hover:shadow-indigo-500/25 hover:scale-105 transition-all duration-500 px-8 py-3 text-sm font-semibold backdrop-blur-sm border border-indigo-400/40 hover:border-indigo-300/60"
+          onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">
+          <span class="relative z-10">Projects</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-indigo-600/0 via-indigo-600/20 to-indigo-600/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+        </button>
+        <button id="btn-contacts" class="group relative overflow-hidden rounded-full bg-gradient-to-r from-pink-500/20 to-purple-500/20 text-white hover:from-pink-500/40 hover:to-purple-500/40 hover:shadow-2xl hover:shadow-pink-500/25 hover:scale-105 transition-all duration-500 px-8 py-3 text-sm font-semibold backdrop-blur-sm border border-pink-400/40 hover:border-pink-300/60"
+          onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">
+          <span class="relative z-10">Contact</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-600/0 via-pink-600/20 to-pink-600/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+        </button>
       </nav>
     </header>
 
-    <main>
-      <!-- About Me Section -->
-      <section id="about" class="min-h-screen flex items-center py-20">
-        <div class="container mx-auto px-8 max-w-4xl">
-          <!-- Profile Image -->
-          <div class="flex justify-center mb-12">
-            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl">
-              <div class="w-64 h-64 bg-gradient-to-br from-space-purple to-space-blue rounded-2xl flex items-center justify-center">
-                <span class="text-6xl">👨‍💻</span>
+    <main class="snap-y snap-mandatory">
+      
+      <!-- Enhanced Header Title Section -->
+      <section class="snap-start min-h-screen flex items-center justify-center scroll-mt-24 relative overflow-hidden">
+        <!-- Floating particles for this section -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-purple-400/60 rounded-full motion-safe:animate-float"></div>
+          <div class="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-pink-400/60 rounded-full motion-safe:animate-float" style="animation-delay: 1s"></div>
+          <div class="absolute bottom-1/4 left-1/3 w-1 h-1 bg-indigo-400/60 rounded-full motion-safe:animate-float" style="animation-delay: 2s"></div>
+        </div>
+        
+        <div class="text-center relative z-10 motion-safe:animate-fadeInScale">
+          <h1 class="font-display text-6xl md:text-8xl lg:text-9xl font-extrabold bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent mb-6 motion-safe:animate-glow">
+            Sherwin's Website
+          </h1>
+          <div class="w-32 h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-full mx-auto motion-safe:animate-glow shadow-lg shadow-purple-500/50"></div>
+          <div class="mt-8 motion-safe:animate-slideInUp" style="animation-delay: 0.3s;">
+            <p class="text-white/80 text-xl md:text-2xl font-light">Welcome to my cosmic digital space 🚀</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Enhanced About Me Section -->
+      <section id="about" class="snap-start min-h-screen flex items-center scroll-mt-24 py-16">
+        <div class="container mx-auto px-8 max-w-5xl">
+          <div class="bg-gradient-to-br from-black/30 via-purple-900/20 to-black/30 backdrop-blur-xl rounded-3xl p-10 border border-gradient-to-r from-purple-500/40 via-pink-500/40 to-indigo-500/40 shadow-2xl shadow-purple-500/20 motion-safe:animate-fadeInScale">
+            <h2 class="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-10 text-center motion-safe:animate-glow">About Me</h2>
+            
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+              <!-- Enhanced Image Section -->
+              <div class="text-center motion-safe:animate-slideInUp">
+                <div class="relative group">
+                  <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 rounded-3xl blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 motion-safe:animate-glow"></div>
+                  <div class="relative bg-gradient-to-br from-purple-500/20 via-black/40 to-indigo-500/20 backdrop-blur-lg rounded-3xl p-6 border border-purple-400/30">
+                    <img class="max-w-sm md:max-w-md rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-500" src="asset/sherwin-profile.jpg" alt="Sherwin" />
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Enhanced Description Section -->
+              <div class="motion-safe:animate-slideInUp" style="animation-delay: 0.2s;">
+                <div class="bg-gradient-to-br from-purple-500/20 via-black/40 to-pink-500/20 backdrop-blur-lg rounded-2xl p-8 border border-purple-400/40 shadow-xl hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105">
+                  <h3 class="text-2xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent mb-4">Hello, Universe! 👋</h3>
+                  <p class="text-white/90 text-xl leading-relaxed mb-6">
+                    Hi! I am Sherwin, I am a coder and this is my website. I am currently in high school and I love playing soccer/football which is one of my hobbies.
+                  </p>
+                  <p class="text-white/90 text-xl leading-relaxed">
+                    I love coding, solving problems and hope you like me!
+                  </p>
+                  <div class="mt-6 flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-purple-500/30 rounded-full text-sm text-purple-200 border border-purple-400/40">🏫 High School</span>
+                    <span class="px-3 py-1 bg-indigo-500/30 rounded-full text-sm text-indigo-200 border border-indigo-400/40">💻 Coder</span>
+                    <span class="px-3 py-1 bg-pink-500/30 rounded-full text-sm text-pink-200 border border-pink-400/40">⚽ Soccer</span>
+                    <span class="px-3 py-1 bg-green-500/30 rounded-full text-sm text-green-200 border border-green-400/40">🧩 Problem Solver</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          
-          <!-- About Description -->
-          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl text-center">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
-            <p class="text-white/90 text-lg leading-8 max-w-3xl mx-auto">
-              Hi, I am Sherwin! I am a coder and this is my website. I am currently in high school and I love playing soccer/football which is one of my hobbies. I love coding, solving problems and hope you like me.
-            </p>
+        </div>
+      </section>
+
+      <!-- Enhanced Projects Solar System -->
+      <section id="projects" class="snap-start min-h-screen flex items-center scroll-mt-24 py-16">
+        <div class="container mx-auto px-8">
+          <div class="bg-gradient-to-br from-black/30 via-indigo-900/20 to-black/30 backdrop-blur-xl rounded-3xl p-8 border border-gradient-to-r from-indigo-500/40 via-purple-500/40 to-pink-500/40 shadow-2xl shadow-indigo-500/20 motion-safe:animate-fadeInScale">
+            <h2 class="font-display text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent mb-6 text-center motion-safe:animate-glow">My Project Solar System</h2>
+            <p class="text-white/80 text-center mb-12 text-lg motion-safe:animate-slideInUp">Click on any planet to explore my cosmic projects! 🌌</p>
+            
+            <!-- Enhanced Solar System Container -->
+            <div class="relative w-full max-w-4xl mx-auto h-96 flex items-center justify-center motion-safe:animate-fadeInScale" style="animation-delay: 0.3s;">
+              
+              <!-- Enhanced Central Star (Sun) -->
+              <div class="absolute w-24 h-24 bg-gradient-to-br from-yellow-200 via-orange-400 to-red-500 rounded-full shadow-2xl shadow-yellow-400/60 motion-safe:animate-glow">
+                <div class="absolute inset-2 bg-gradient-to-br from-yellow-100 to-orange-300 rounded-full animate-spin" style="animation-duration: 8s;"></div>
+                <div class="absolute inset-1 rounded-full bg-gradient-to-br from-transparent via-white/30 to-transparent"></div>
+                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-400/50 to-transparent animate-pulse"></div>
+              </div>
+
+              <!-- Enhanced Orbital Paths -->
+              <div class="absolute w-60 h-60 border border-purple-300/30 rounded-full motion-safe:animate-glow" style="animation-delay: 0s;"></div>
+              <div class="absolute w-80 h-80 border border-indigo-300/25 rounded-full motion-safe:animate-glow" style="animation-delay: 1s;"></div>
+              <div class="absolute w-96 h-96 border border-pink-300/20 rounded-full motion-safe:animate-glow" style="animation-delay: 2s;"></div>
+
+              <!-- Enhanced Planet 1: Pizza Project -->
+              <div class="absolute animate-planetOrbit1 cursor-pointer group" onclick="openProject('pizza')">
+                <div class="relative w-14 h-14 bg-gradient-to-br from-red-400 via-orange-500 to-red-600 rounded-full shadow-xl hover:shadow-2xl hover:shadow-orange-400/60 transition-all duration-500 hover:scale-125 flex items-center justify-center border-2 border-orange-300/50">
+                  <span class="text-2xl filter drop-shadow-lg">🍕</span>
+                  <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent"></div>
+                  <div class="absolute -inset-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/90 backdrop-blur-sm px-4 py-2 rounded-xl text-white text-sm whitespace-nowrap border border-orange-400/30 shadow-lg">
+                  🍕 Pizza Project
+                </div>
+              </div>
+
+              <!-- Enhanced Planet 2: ESG Predictor -->
+              <div class="absolute animate-planetOrbit2 cursor-pointer group" onclick="openProject('esg')" style="animation-delay: -10s;">
+                <div class="relative w-16 h-16 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 rounded-full shadow-xl hover:shadow-2xl hover:shadow-emerald-400/60 transition-all duration-500 hover:scale-125 flex items-center justify-center border-2 border-emerald-300/50">
+                  <span class="text-3xl filter drop-shadow-lg">🌱</span>
+                  <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent"></div>
+                  <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/90 backdrop-blur-sm px-4 py-2 rounded-xl text-white text-sm whitespace-nowrap border border-emerald-400/30 shadow-lg">
+                  🌱 ESG Predictor
+                </div>
+              </div>
+
+              <!-- Enhanced Planet 3: Football Analysis Podcast -->
+              <div class="absolute animate-planetOrbit3 cursor-pointer group" onclick="openProject('podcast')" style="animation-delay: -20s;">
+                <div class="relative w-18 h-18 bg-gradient-to-br from-blue-400 via-indigo-500 to-violet-600 rounded-full shadow-xl hover:shadow-2xl hover:shadow-blue-400/60 transition-all duration-500 hover:scale-125 flex items-center justify-center border-2 border-blue-300/50">
+                  <span class="text-3xl filter drop-shadow-lg">🎙️</span>
+                  <div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent"></div>
+                  <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+                </div>
+                <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/90 backdrop-blur-sm px-4 py-2 rounded-xl text-white text-sm whitespace-nowrap border border-blue-400/30 shadow-lg">
+                  🎙️ Football Podcast
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Enhanced Project Details Modal -->
+            <div id="projectModal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4">
+              <div class="bg-gradient-to-br from-black/80 via-purple-900/30 to-black/80 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/40 max-w-2xl w-full shadow-2xl shadow-purple-500/30 motion-safe:animate-fadeInScale">
+                <div class="flex justify-between items-center mb-6">
+                  <h3 id="modalTitle" class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"></h3>
+                  <button onclick="closeProject()" class="text-white/60 hover:text-white hover:scale-110 transition-all duration-300 text-3xl">&times;</button>
+                </div>
+                <div id="modalContent" class="text-white/90 space-y-4"></div>
+                <div class="mt-8 flex gap-4">
+                  <button onclick="closeProject()" class="px-6 py-3 bg-gradient-to-r from-purple-500/30 to-indigo-500/30 hover:from-purple-500/50 hover:to-indigo-500/50 border border-purple-400/40 hover:border-purple-300/60 rounded-full text-white transition-all duration-300 hover:scale-105">Close</button>
+                  <a id="modalLink" href="#" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full text-white transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">View Project</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      <!-- Projects Section -->
-      <section id="projects" class="min-h-screen flex items-center py-20">
+      <!-- Enhanced Contact Section -->
+      <section id="contacts" class="snap-start min-h-screen flex items-center scroll-mt-24">
         <div class="container mx-auto px-8">
-          <div class="text-center mb-12">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">My Projects</h2>
-            <p class="text-white/80 text-lg">Here are some of the projects I've been working on</p>
-          </div>
-          
-          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <!-- Project 1 -->
-            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div class="text-4xl mb-4 text-center">🚀</div>
-              <h3 class="text-xl font-semibold text-white mb-3 text-center">Space Explorer</h3>
-              <p class="text-white/80 leading-relaxed text-center">I created an app that helps you navigate through different galaxies and discover new planets in the universe.</p>
-            </article>
-            
-            <!-- Project 2 -->
-            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div class="text-4xl mb-4 text-center">⚽</div>
-              <h3 class="text-xl font-semibold text-white mb-3 text-center">Soccer Stats</h3>
-              <p class="text-white/80 leading-relaxed text-center">A web application that tracks soccer/football statistics and helps players improve their game performance.</p>
-            </article>
-            
-            <!-- Project 3 -->
-            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              <div class="text-4xl mb-4 text-center">🧩</div>
-              <h3 class="text-xl font-semibold text-white mb-3 text-center">Problem Solver</h3>
-              <p class="text-white/80 leading-relaxed text-center">An interactive tool that helps solve coding problems and mathematical puzzles with step-by-step solutions.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contacts" class="min-h-screen flex items-center py-20">
-        <div class="container mx-auto px-8">
-          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">Contact Me</h2>
+          <div class="bg-gradient-to-br from-black/30 via-pink-900/20 to-black/30 backdrop-blur-xl rounded-3xl p-8 border border-gradient-to-r from-pink-500/40 via-purple-500/40 to-indigo-500/40 shadow-2xl shadow-pink-500/20 max-w-2xl mx-auto motion-safe:animate-fadeInScale">
+            <h2 class="font-display text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent mb-8 text-center motion-safe:animate-glow">Contact Me</h2>
             <div class="space-y-6">
-              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 text-center">
-                <p class="text-white/90 text-lg">
-                  <span class="font-semibold">Email:</span> 
-                  <a class="text-space-purple hover:text-purple-300 underline decoration-space-purple/50 hover:decoration-purple-300 transition-all ml-2" href="mailto:sherwin@email.com">sherwin@email.com</a>
+              <div class="bg-gradient-to-r from-pink-500/20 via-purple-500/15 to-indigo-500/20 backdrop-blur-lg rounded-2xl p-6 border border-pink-400/40 text-center hover:scale-105 hover:shadow-xl hover:shadow-pink-500/25 transition-all duration-500 motion-safe:animate-slideInUp">
+                <p class="text-white/90 text-lg mb-4">
+                  <span class="font-semibold text-pink-300">📧 Email:</span> 
+                  <a class="text-pink-300 hover:text-pink-200 underline decoration-pink-300/50 hover:decoration-pink-200 transition-all ml-2 hover:scale-105 inline-block" href="mailto:sherwinynlau@gmail.com">sherwinynlau@gmail.com</a>
                 </p>
               </div>
-              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 text-center">
-                <p class="text-white/90 text-lg">
-                  <span class="font-semibold">LinkedIn:</span> 
-                  <a class="text-space-purple hover:text-purple-300 underline decoration-space-purple/50 hover:decoration-purple-300 transition-all ml-2" href="#" target="_blank">linkedin.com/in/sherwin</a>
+              <div class="bg-gradient-to-r from-purple-500/20 via-pink-500/15 to-purple-500/20 backdrop-blur-lg rounded-2xl p-6 border border-purple-400/40 text-center hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 transition-all duration-500 motion-safe:animate-slideInUp" style="animation-delay: 0.1s;">
+                <p class="text-white/90 text-lg mb-4">
+                  <span class="font-semibold text-purple-300">📷 Instagram:</span> 
+                  <a class="text-purple-300 hover:text-purple-200 underline decoration-purple-300/50 hover:decoration-purple-200 transition-all ml-2 hover:scale-105 inline-block" href="https://instagram.com/sherwin" target="_blank">@sherwin</a>
                 </p>
               </div>
-              <div class="text-center pt-4">
+              <div class="bg-gradient-to-r from-indigo-500/20 via-blue-500/15 to-indigo-500/20 backdrop-blur-lg rounded-2xl p-6 border border-indigo-400/40 text-center hover:scale-105 hover:shadow-xl hover:shadow-indigo-500/25 transition-all duration-500 motion-safe:animate-slideInUp" style="animation-delay: 0.2s;">
+                <p class="text-white/90 text-lg mb-4">
+                  <span class="font-semibold text-indigo-300">💼 LinkedIn:</span> 
+                  <a class="text-indigo-300 hover:text-indigo-200 underline decoration-indigo-300/50 hover:decoration-indigo-200 transition-all ml-2 hover:scale-105 inline-block" href="#" target="_blank">linkedin.com/in/sherwin</a>
+                </p>
+              </div>
+              <div class="text-center pt-4 motion-safe:animate-slideInUp" style="animation-delay: 0.3s;">
                 <p class="text-white/80 text-lg">Feel free to reach out for collaboration or just to say hi 🚀</p>
+                <div class="mt-4 flex justify-center space-x-2">
+                  <span class="animate-bounce">✨</span>
+                  <span class="animate-bounce" style="animation-delay: 0.1s;">🌟</span>
+                  <span class="animate-bounce" style="animation-delay: 0.2s;">✨</span>
+                </div>
               </div>
             </div>
           </div>
@@ -287,13 +470,12 @@
       </section>
     </main>
 
-    <footer class="bg-black/20 backdrop-blur-lg border-t border-white/10 text-white py-8">
+    <footer class="bg-black/30 backdrop-blur-lg border-t border-purple-500/20 text-white py-8">
       <div class="container mx-auto px-8 text-center">
-        <p class="text-white/80">© 2024 Sherwin's Projects - High School Coder 🚀</p>
+        <p class="text-white/80">© 2024 Sherwin's Portfolio 🚀</p>
       </div>
     </footer>
-    
-    <button id="backToTop" aria-label="Back to top" class="hidden fixed bottom-6 right-6 h-14 w-14 rounded-full bg-white/20 backdrop-blur-lg text-white shadow-2xl hover:bg-white/30 hover:scale-110 transition-all duration-300 grid place-items-center border border-white/30 text-xl">↑</button>
+    <button id="backToTop" aria-label="Back to top" class="hidden fixed bottom-6 right-6 h-16 w-16 rounded-full bg-gradient-to-r from-purple-500/30 to-pink-500/30 backdrop-blur-xl text-white shadow-2xl shadow-purple-500/30 hover:from-purple-500/50 hover:to-pink-500/50 hover:scale-110 hover:shadow-2xl hover:shadow-purple-500/40 transition-all duration-500 grid place-items-center border border-purple-400/40 text-2xl motion-safe:animate-glow">🚀</button>
 
     <script>
       // Back to top button visibility and behavior
@@ -303,6 +485,111 @@
         else btn.classList.add('hidden');
       });
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+      // Project Solar System Interactions
+      const projectData = {
+        pizza: {
+          title: "🍕 Pizza Project",
+          content: `
+            <p><strong>The Ultimate Pizza Companion App!</strong></p>
+            <p>This innovative application helps users discover their perfect pizza combinations based on their taste preferences, dietary restrictions, and mood.</p>
+            <ul class="list-disc list-inside space-y-2 mt-4">
+              <li>Smart recommendation algorithm</li>
+              <li>Dietary restriction filters (vegetarian, gluten-free, etc.)</li>
+              <li>Local pizzeria integration</li>
+              <li>Social sharing features</li>
+              <li>Built with React and Node.js</li>
+            </ul>
+          `,
+          link: "#pizza-project"
+        },
+        esg: {
+          title: "🌱 ESG Predictor",
+          content: `
+            <p><strong>Environmental, Social & Governance Forecasting Platform!</strong></p>
+            <p>Advanced machine learning system that analyzes historical ESG data of companies to forecast future sustainability trends and investment predictions.</p>
+            <ul class="list-disc list-inside space-y-2 mt-4">
+              <li>Historical ESG data analysis and processing</li>
+              <li>Predictive modeling using machine learning algorithms</li>
+              <li>Company sustainability trend forecasting</li>
+              <li>Investment risk assessment based on ESG factors</li>
+              <li>Interactive data visualizations and reports</li>
+              <li>Built with Python, TensorFlow, and Pandas</li>
+            </ul>
+          `,
+          link: "#esg-predictor"
+        },
+        podcast: {
+          title: "🎙️ Football Analysis Podcast",
+          content: `
+            <p><strong>AI-Powered Player Performance Forecasting!</strong></p>
+            <p>Innovative podcast platform featuring custom algorithms that analyze player historical data to predict upcoming season performance with detailed insights.</p>
+            <ul class="list-disc list-inside space-y-2 mt-4">
+              <li>Custom algorithm for player performance analysis</li>
+              <li>Historical data processing and pattern recognition</li>
+              <li>Season performance forecasting models</li>
+              <li>Interactive podcast episodes with data insights</li>
+              <li>Player comparison and ranking systems</li>
+              <li>Built with Python, scikit-learn, and audio processing libraries</li>
+            </ul>
+          `,
+          link: "#football-podcast"
+        }
+      };
+
+      function openProject(projectKey) {
+        const project = projectData[projectKey];
+        const modal = document.getElementById('projectModal');
+        const title = document.getElementById('modalTitle');
+        const content = document.getElementById('modalContent');
+        const link = document.getElementById('modalLink');
+        
+        title.textContent = project.title;
+        content.innerHTML = project.content;
+        link.href = project.link;
+        
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeProject() {
+        const modal = document.getElementById('projectModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal when clicking outside
+      document.getElementById('projectModal').addEventListener('click', (e) => {
+        if (e.target.id === 'projectModal') {
+          closeProject();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeProject();
+        }
+      });
+
+      // Highlight active nav button based on section in view
+      const sections = [
+        { id: 'about', btn: document.getElementById('btn-about') },
+        { id: 'projects', btn: document.getElementById('btn-projects') },
+        { id: 'contacts', btn: document.getElementById('btn-contacts') },
+      ];
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const match = sections.find(s => s.id === entry.target.id);
+          if (!match) return;
+          if (entry.isIntersecting) {
+            sections.forEach(s => s.btn.classList.remove('ring-2','ring-white/70'));
+            match.btn.classList.add('ring-2','ring-white/70');
+            match.btn.setAttribute('aria-current','page');
+          }
+        })
+      }, { root: null, threshold: 0.6 });
+      sections.forEach(s => observer.observe(document.getElementById(s.id)));
     </script>
   </body>
 </html>
