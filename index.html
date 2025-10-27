@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta n            <h1 class="font-display text-4xl md:text-6xl font-extrabold text-white mb-2">Hi, I'm Sherwin</h1>
-            <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-6"></div>
-            <p class="text-white/90 text-lg leading-relaxed mb-6">I love learning new things and building fun projects. I may be a rookie, but I'm passionate about coding and always improving!</p>
-            <p class="text-amber-300 text-xl font-medium mb-8">I love eating food <a class="underline decoration-amber-300/50 hover:decoration-amber-300 transition-all" href="https://rexanwong.xyz" target="_blank" rel="noopener">(my friend's site)</a>!</p>="description" content="Sherwin's portfolio – projects, about me, and how to get in touch. Ocean-inspired smooth scrolling experience." />
-    <title>Sherwin | Portfolio</title>
+    <meta name="description" content="Sherwin's portfolio – projects, about me, and how to get in touch. Ocean-inspired smooth scrolling experience." />
+    <title>Sherwin's Projects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <script>
       tailwind.config = {
         theme: {
@@ -21,60 +19,81 @@
               display: ['Poppins', 'Inter', 'ui-sans-serif']
             },
             colors: {
-              ocean1: '#0ea5e9', // cyan-500
-              ocean2: '#0284c7', // sky-600
-              sand: '#fef3c7',   // amber-100
+              'space-purple': '#6366f1',
+              'space-blue': '#3b82f6', 
+              'space-pink': '#ec4899',
+              nebula: '#8b5cf6',
+              'cosmic-gold': '#fbbf24',
             },
             keyframes: {
-              swim: {
-                '0%':   { transform: 'translateX(-15%) translateY(0)' },
-                '50%':  { transform: 'translateX(50vw) translateY(-10px)' },
-                '100%': { transform: 'translateX(115vw) translateY(0)' }
+              orbit: {
+                '0%': { transform: 'rotate(0deg) translateX(100px) rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg) translateX(100px) rotate(-360deg)' }
               },
-              swimReverse: {
-                '0%':   { transform: 'translateX(115vw) translateY(0) scaleX(-1)' },
-                '50%':  { transform: 'translateX(50vw) translateY(-8px) scaleX(-1)' },
-                '100%': { transform: 'translateX(-15vw) translateY(0) scaleX(-1)' }
+              orbitReverse: {
+                '0%': { transform: 'rotate(0deg) translateX(150px) rotate(0deg)' },
+                '100%': { transform: 'rotate(-360deg) translateX(150px) rotate(360deg)' }
               },
-              bob: {
-                '0%,100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-8px)' }
+              rocketFly: {
+                '0%': { transform: 'translateX(-20%) translateY(10px) rotate(-10deg)' },
+                '50%': { transform: 'translateX(50vw) translateY(-50px) rotate(5deg)' },
+                '100%': { transform: 'translateX(120vw) translateY(20px) rotate(-5deg)' }
               },
-              wave1: {
-                '0%,100%': { transform: 'translateX(0) translateY(0)' },
-                '50%': { transform: 'translateX(-25px) translateY(-10px)' }
+              rocketFlyReverse: {
+                '0%': { transform: 'translateX(120vw) translateY(20px) rotate(185deg)' },
+                '50%': { transform: 'translateX(50vw) translateY(-30px) rotate(175deg)' },
+                '100%': { transform: 'translateX(-20vw) translateY(10px) rotate(190deg)' }
               },
-              wave2: {
-                '0%,100%': { transform: 'translateX(0) translateY(0)' },
-                '50%': { transform: 'translateX(30px) translateY(-15px)' }
+              twinkle: {
+                '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                '50%': { opacity: '1', transform: 'scale(1.2)' }
               },
-              wave3: {
-                '0%,100%': { transform: 'translateX(0) translateY(0)' },
-                '50%': { transform: 'translateX(-15px) translateY(-5px)' }
+              starGlow: {
+                '0%, 100%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
+                '50%': { boxShadow: '0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8)' }
+              },
+              nebulaDrift: {
+                '0%, 100%': { transform: 'translateX(0) translateY(0) rotate(0deg)' },
+                '33%': { transform: 'translateX(-30px) translateY(-20px) rotate(2deg)' },
+                '66%': { transform: 'translateX(20px) translateY(-10px) rotate(-1deg)' }
+              },
+              nebulaDrift2: {
+                '0%, 100%': { transform: 'translateX(0) translateY(0) rotate(0deg)' },
+                '33%': { transform: 'translateX(40px) translateY(-30px) rotate(-2deg)' },
+                '66%': { transform: 'translateX(-25px) translateY(-5px) rotate(1deg)' }
               },
               float: {
-                '0%,100%': { transform: 'translateY(0px)' },
+                '0%, 100%': { transform: 'translateY(0px)' },
                 '50%': { transform: 'translateY(-20px)' }
               },
-              bubble: {
-                '0%': { transform: 'translateY(100vh) scale(0)', opacity: '0' },
+              shootingStar: {
+                '0%': { transform: 'translateX(-100px) translateY(-100px)', opacity: '0' },
                 '10%': { opacity: '1' },
                 '90%': { opacity: '1' },
-                '100%': { transform: 'translateY(-100px) scale(1)', opacity: '0' }
+                '100%': { transform: 'translateX(100vw) translateY(100vh)', opacity: '0' }
+              },
+              planetSpin: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' }
               }
             },
             animation: {
-              swimSlow: 'swim 35s linear infinite',
-              swimMed: 'swim 25s linear infinite',
-              swimFast: 'swim 15s linear infinite',
-              swimReverseSlow: 'swimReverse 40s linear infinite',
-              swimReverseMed: 'swimReverse 30s linear infinite',
-              bob: 'bob 4s ease-in-out infinite',
-              wave1: 'wave1 8s ease-in-out infinite',
-              wave2: 'wave2 12s ease-in-out infinite',
-              wave3: 'wave3 6s ease-in-out infinite',
+              orbitSlow: 'orbit 60s linear infinite',
+              orbitMed: 'orbit 40s linear infinite', 
+              orbitFast: 'orbitReverse 25s linear infinite',
+              rocketSlow: 'rocketFly 45s linear infinite',
+              rocketMed: 'rocketFly 30s linear infinite',
+              rocketFast: 'rocketFly 20s linear infinite',
+              rocketReverseSlow: 'rocketFlyReverse 50s linear infinite',
+              rocketReverseMed: 'rocketFlyReverse 35s linear infinite',
+              twinkle: 'twinkle 3s ease-in-out infinite',
+              twinkleSlow: 'twinkle 6s ease-in-out infinite',
+              starGlow: 'starGlow 4s ease-in-out infinite',
+              nebulaDrift: 'nebulaDrift 15s ease-in-out infinite',
+              nebulaDrift2: 'nebulaDrift2 12s ease-in-out infinite',
               float: 'float 6s ease-in-out infinite',
-              bubbleRise: 'bubble 8s linear infinite'
+              shootingStar: 'shootingStar 3s linear infinite',
+              planetSpin: 'planetSpin 20s linear infinite'
             }
           }
         }
@@ -82,174 +101,185 @@
     </script>
   </head>
   <body class="font-sans text-slate-800 overflow-x-hidden">
-    <!-- Animated Ocean Background -->
+    <!-- Animated Space Background -->
     <div aria-hidden="true" class="fixed inset-0 -z-20">
-      <!-- Deep ocean gradient from surface to depths -->
-      <div class="absolute inset-0 bg-gradient-to-b from-sky-200 via-blue-300 via-blue-500 to-blue-900"></div>
+      <!-- Deep space gradient from stars to void -->
+      <div class="absolute inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 via-black to-black"></div>
       
-      <!-- Animated wave layers for movement -->
+      <!-- Animated nebula layers for cosmic movement -->
       <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-b from-cyan-200/40 via-transparent to-transparent motion-safe:animate-wave1"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-blue-200/30 via-transparent to-transparent motion-safe:animate-wave2"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-sky-100/20 via-transparent to-transparent motion-safe:animate-wave3"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-500/20 via-transparent to-transparent motion-safe:animate-nebulaDrift"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-pink-500/15 via-transparent to-transparent motion-safe:animate-nebulaDrift2"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-400/10 via-transparent to-transparent motion-safe:animate-float"></div>
       </div>
       
-      <!-- Light caustics and depth effects -->
-      <div class="absolute inset-0 opacity-30">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)] motion-safe:animate-float"></div>
-        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3),transparent_70%)] motion-safe:animate-wave1"></div>
-        <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.2),transparent_70%)] motion-safe:animate-wave2"></div>
+      <!-- Starfield and cosmic effects -->
+      <div class="absolute inset-0 opacity-80">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.3),transparent_70%)] motion-safe:animate-float"></div>
+        <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-[radial-gradient(circle_at_center,rgba(236,72,153,0.2),transparent_70%)] motion-safe:animate-nebulaDrift"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-72 h-72 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.25),transparent_70%)] motion-safe:animate-nebulaDrift2"></div>
+      </div>
+      
+      <!-- Twinkling stars -->
+      <div class="absolute inset-0">
+        <div class="absolute top-20 left-[10%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 0s"></div>
+        <div class="absolute top-32 left-[25%] w-1.5 h-1.5 bg-white rounded-full motion-safe:animate-twinkleSlow" style="animation-delay: 1s"></div>
+        <div class="absolute top-40 left-[60%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 2s"></div>
+        <div class="absolute top-24 left-[80%] w-2 h-2 bg-white rounded-full motion-safe:animate-starGlow" style="animation-delay: 3s"></div>
+        <div class="absolute top-64 left-[15%] w-1 h-1 bg-white rounded-full motion-safe:animate-twinkleSlow" style="animation-delay: 4s"></div>
+        <div class="absolute top-80 left-[45%] w-1.5 h-1.5 bg-white rounded-full motion-safe:animate-twinkle" style="animation-delay: 5s"></div>
+        <div class="absolute top-96 left-[75%] w-1 h-1 bg-white rounded-full motion-safe:animate-starGlow" style="animation-delay: 6s"></div>
       </div>
     </div>
 
-    <!-- Floating bubbles -->
+    <!-- Shooting stars -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <div class="absolute bottom-0 left-[10%] w-2 h-2 bg-white/40 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 0s"></div>
-      <div class="absolute bottom-0 left-[25%] w-1 h-1 bg-white/30 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 2s"></div>
-      <div class="absolute bottom-0 left-[60%] w-3 h-3 bg-white/25 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 4s"></div>
-      <div class="absolute bottom-0 left-[80%] w-1.5 h-1.5 bg-white/35 rounded-full motion-safe:animate-bubbleRise" style="animation-delay: 6s"></div>
+      <div class="absolute top-[10%] left-[-5%] w-1 h-12 bg-gradient-to-b from-white to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 0s"></div>
+      <div class="absolute top-[30%] left-[-5%] w-0.5 h-8 bg-gradient-to-b from-cyan-300 to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 8s"></div>
+      <div class="absolute top-[60%] left-[-5%] w-1.5 h-16 bg-gradient-to-b from-pink-300 to-transparent rotate-45 motion-safe:animate-shootingStar" style="animation-delay: 15s"></div>
     </div>
-    <!-- Swimming fish ecosystem -->
+    <!-- Flying rockets and space objects -->
     <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <!-- Surface fish (bright and small) -->
-      <svg class="absolute top-20 left-[-20%] h-8 w-14 text-cyan-500/80 motion-safe:animate-swimMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 2s">
-        <path d="M22 16c0 5 7 8 16 8 6 0 12-2 16-5-4-3-10-5-16-5-9 0-16 3-16 8z"/>
-        <circle cx="46" cy="14" r="2" fill="white"/>
-        <circle cx="46" cy="14" r="1" fill="black"/>
-        <path d="M8 16l8-4v8z"/>
+      <!-- Rockets flying across space -->
+      <svg class="absolute top-20 left-[-20%] h-12 w-20 text-orange-400 motion-safe:animate-rocketMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 2s">
+        <path d="M10 16l20-8 20 8-20 8z"/>
+        <circle cx="45" cy="16" r="3" fill="#fbbf24"/>
+        <path d="M8 16l-6-2v4z" fill="#ef4444"/>
+        <path d="M8 16l-4-4v8z" fill="#f97316"/>
       </svg>
       
-      <!-- Mid-depth fish (medium size, slower) -->
-      <svg class="absolute top-1/3 left-[-25%] h-12 w-20 text-blue-400/70 motion-safe:animate-swimSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 8s">
-        <path d="M20 16c0 6 8 10 18 10 7 0 14-3 18-6-4-3-11-6-18-6-10 0-18 4-18 10z"/>
-        <circle cx="50" cy="14" r="2.5" fill="white"/>
-        <circle cx="50" cy="14" r="1.2" fill="black"/>
-        <path d="M6 16l10-6v12z"/>
-        <path d="M52 20l8-3v6z" opacity="0.7"/>
+      <!-- Space station -->
+      <svg class="absolute top-1/3 left-[-25%] h-16 w-24 text-gray-300 motion-safe:animate-rocketSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 8s">
+        <rect x="20" y="12" width="24" height="8" rx="2"/>
+        <circle cx="32" cy="16" r="6" fill="none" stroke="currentColor" stroke-width="1"/>
+        <rect x="15" y="14" width="6" height="4"/>
+        <rect x="43" y="14" width="6" height="4"/>
+        <circle cx="28" cy="16" r="1" fill="#fbbf24"/>
+        <circle cx="36" cy="16" r="1" fill="#fbbf24"/>
       </svg>
 
-      <!-- Deep fish (larger, darker) -->
-      <svg class="absolute bottom-1/4 left-[-30%] h-16 w-24 text-blue-600/60 motion-safe:animate-swimSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 15s">
-        <path d="M18 16c0 7 9 12 20 12 8 0 16-4 20-7-4-3-12-7-20-7-11 0-20 5-20 12z"/>
-        <circle cx="50" cy="13" r="3" fill="white"/>
-        <circle cx="50" cy="13" r="1.5" fill="black"/>
-        <path d="M4 16l12-7v14z"/>
-        <path d="M52 22l10-4v8z" opacity="0.8"/>
+      <!-- UFO -->
+      <svg class="absolute bottom-1/4 left-[-30%] h-10 w-16 text-purple-400 motion-safe:animate-rocketSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 15s">
+        <ellipse cx="32" cy="20" rx="16" ry="6"/>
+        <ellipse cx="32" cy="16" rx="12" ry="4" fill="#8b5cf6"/>
+        <circle cx="28" cy="15" r="1" fill="#fbbf24"/>
+        <circle cx="32" cy="15" r="1" fill="#fbbf24"/>
+        <circle cx="36" cy="15" r="1" fill="#fbbf24"/>
       </svg>
 
-      <!-- Reverse swimming fish for variety -->
-      <svg class="absolute top-2/3 right-[-20%] h-10 w-16 text-teal-500/70 motion-safe:animate-swimReverseMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 5s">
-        <path d="M26 16c0 5 7 8 16 8 6 0 12-2 16-5-4-3-10-5-16-5-9 0-16 3-16 8z"/>
-        <circle cx="18" cy="14" r="2" fill="white"/>
-        <circle cx="18" cy="14" r="1" fill="black"/>
-        <path d="M56 16l-8-4v8z"/>
+      <!-- Satellite -->
+      <svg class="absolute top-2/3 right-[-20%] h-8 w-12 text-cyan-400 motion-safe:animate-rocketReverseMed" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 5s">
+        <rect x="28" y="14" width="8" height="4" rx="1"/>
+        <path d="M20 16l8-2v4z"/>
+        <path d="M44 16l-8-2v4z"/>
+        <circle cx="32" cy="16" r="1" fill="#fbbf24"/>
       </svg>
 
-      <!-- Small school fish -->
-      <svg class="absolute top-1/2 left-[-15%] h-6 w-10 text-sky-400/80 motion-safe:animate-swimFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12s">
-        <path d="M20 16c0 3 5 6 12 6 4 0 8-1 10-3-3-2-6-3-10-3-7 0-12 2-12 6z"/>
-        <circle cx="40" cy="14" r="1.5" fill="white"/>
-        <circle cx="40" cy="14" r="0.8" fill="black"/>
-        <path d="M8 16l6-3v6z"/>
+      <!-- Small asteroids -->
+      <svg class="absolute top-1/2 left-[-15%] h-4 w-6 text-gray-500 motion-safe:animate-rocketFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12s">
+        <circle cx="32" cy="16" r="8"/>
+        <circle cx="28" cy="14" r="2" fill="#6b7280"/>
+        <circle cx="36" cy="18" r="1.5" fill="#6b7280"/>
       </svg>
       
-      <svg class="absolute top-1/2 left-[-12%] h-5 w-8 text-sky-400/80 motion-safe:animate-swimFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12.5s">
-        <path d="M22 16c0 2 4 5 10 5 3 0 6-1 8-2-2-1-5-2-8-2-6 0-10 1-10 4z"/>
-        <circle cx="38" cy="15" r="1.2" fill="white"/>
-        <circle cx="38" cy="15" r="0.6" fill="black"/>
-        <path d="M10 16l5-2v4z"/>
+      <svg class="absolute top-1/2 left-[-12%] h-3 w-5 text-gray-600 motion-safe:animate-rocketFast" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 12.5s">
+        <circle cx="32" cy="16" r="6"/>
+        <circle cx="30" cy="15" r="1" fill="#4b5563"/>
       </svg>
 
-      <!-- Deep bottom fish (very slow, large) -->
-      <svg class="absolute bottom-8 left-[-35%] h-20 w-32 text-indigo-700/50 motion-safe:animate-swimReverseSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 20s">
-        <path d="M16 16c0 8 10 14 22 14 9 0 18-5 22-8-4-3-13-8-22-8-12 0-22 6-22 14z"/>
-        <circle cx="52" cy="12" r="3.5" fill="white"/>
-        <circle cx="52" cy="12" r="1.8" fill="black"/>
-        <path d="M2 16l14-8v16z"/>
-        <path d="M54 24l12-5v10z" opacity="0.9"/>
+      <!-- Large planet in distance -->
+      <svg class="absolute bottom-8 left-[-35%] h-24 w-24 text-indigo-600 motion-safe:animate-rocketReverseSlow" viewBox="0 0 64 32" fill="currentColor" style="animation-delay: 20s">
+        <circle cx="32" cy="16" r="15"/>
+        <ellipse cx="32" cy="16" rx="15" ry="3" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.6"/>
+        <circle cx="28" cy="12" r="2" fill="#6366f1"/>
+        <circle cx="36" cy="18" r="1.5" fill="#6366f1"/>
+        <circle cx="30" cy="20" r="1" fill="#6366f1"/>
       </svg>
     </div>
 
     <!-- Top Navigation -->
     <header class="sticky top-0 z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
-      <nav class="container mx-auto px-6 py-4 flex items-center justify-center gap-4">
-        <button id="btn-about" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
-          onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">About Me</button>
-        <button id="btn-projects" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
-          onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Projects</button>
-        <button id="btn-contacts" class="rounded-full bg-white/90 text-slate-800 hover:bg-white hover:shadow-lg transition-all duration-300 px-6 py-2.5 text-sm font-semibold backdrop-blur-sm"
-          onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">Contacts</button>
+      <nav class="container mx-auto px-6 py-4 flex items-center justify-center">
+        <h1 class="text-2xl font-display font-bold text-white">Sherwin's Projects</h1>
       </nav>
     </header>
 
-    <main class="snap-y snap-mandatory">
-      <!-- About Section / Hero -->
-  <section id="about" class="snap-start min-h-screen flex items-center scroll-mt-24">
-        <div class="container mx-auto px-8 grid md:grid-cols-2 gap-12 items-center">
-          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <h1 class="font-display text-4xl md:text-5xl font-extrabold text-slate-900">Hi, I’m Sherwin</h1>
-            <p class="mt-4 text-slate-600 text-lg leading-8">I love learning new things and building fun projects. I may be a rookie, but I'm passionate about coding and always improving!</p>
-            <p class="mt-6 text-amber-600 text-xl">I love eating food <a class="underline decoration-amber-400 hover:text-amber-700" href="https://rexanwong.xyz" target="_blank" rel="noopener">(my friend's site)</a>!</p>
-            <div class="flex gap-4">
-              <a href="#projects" class="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">See Projects</a>
-              <a href="#contacts" class="inline-flex items-center rounded-full bg-white/20 backdrop-blur-sm text-white px-8 py-3 font-semibold border border-white/30 hover:bg-white/30 transition-all duration-300">Contact Me</a>
+    <main>
+      <!-- About Me Section -->
+      <section id="about" class="min-h-screen flex items-center py-20">
+        <div class="container mx-auto px-8 max-w-4xl">
+          <!-- Profile Image -->
+          <div class="flex justify-center mb-12">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 border border-white/20 shadow-2xl">
+              <div class="w-64 h-64 bg-gradient-to-br from-space-purple to-space-blue rounded-2xl flex items-center justify-center">
+                <span class="text-6xl">👨‍💻</span>
+              </div>
             </div>
           </div>
-          <div class="flex justify-center md:justify-end">
-            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-4 border border-white/20 shadow-2xl">
-              <img class="max-w-xs md:max-w-sm rounded-2xl" src="asset/Cheese.png" alt="Sherwin enjoying cheese" />
-            </div>
+          
+          <!-- About Description -->
+          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl text-center">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-6">About Me</h2>
+            <p class="text-white/90 text-lg leading-8 max-w-3xl mx-auto">
+              Hi, I am Sherwin! I am a coder and this is my website. I am currently in high school and I love playing soccer/football which is one of my hobbies. I love coding, solving problems and hope you like me.
+            </p>
           </div>
         </div>
       </section>
-      <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] leading-[0]" aria-hidden="true">
-        <svg viewBox="0 0 1440 100" class="w-full h-[100px]"><path d="M0,40 C480,120 960,0 1440,80 L1440,100 L0,100 Z" class="fill-sky-100"/></svg>
-      </div>
 
-      <!-- Projects -->
-      <section id="projects" class="snap-start min-h-screen flex items-center scroll-mt-24">
+      <!-- Projects Section -->
+      <section id="projects" class="min-h-screen flex items-center py-20">
         <div class="container mx-auto px-8">
-          <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-              <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <div class="text-4xl mb-4">🍕</div>
-                <h3 class="text-xl font-semibold text-white mb-3">Pizza Project</h3>
-                <p class="text-white/80 leading-relaxed">I created an app that determines the best toppings for your pizza.</p>
-              </article>
-              <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                <div class="text-4xl mb-4">⚽</div>
-                <h3 class="text-xl font-semibold text-white mb-3">Football Game</h3>
-                <p class="text-white/80 leading-relaxed">I created a game where you can play football as any player you want.</p>
-              </article>
-            </div>
+          <div class="text-center mb-12">
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">My Projects</h2>
+            <p class="text-white/80 text-lg">Here are some of the projects I've been working on</p>
+          </div>
+          
+          <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Project 1 -->
+            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <div class="text-4xl mb-4 text-center">🚀</div>
+              <h3 class="text-xl font-semibold text-white mb-3 text-center">Space Explorer</h3>
+              <p class="text-white/80 leading-relaxed text-center">I created an app that helps you navigate through different galaxies and discover new planets in the universe.</p>
+            </article>
+            
+            <!-- Project 2 -->
+            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <div class="text-4xl mb-4 text-center">⚽</div>
+              <h3 class="text-xl font-semibold text-white mb-3 text-center">Soccer Stats</h3>
+              <p class="text-white/80 leading-relaxed text-center">A web application that tracks soccer/football statistics and helps players improve their game performance.</p>
+            </article>
+            
+            <!-- Project 3 -->
+            <article class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <div class="text-4xl mb-4 text-center">🧩</div>
+              <h3 class="text-xl font-semibold text-white mb-3 text-center">Problem Solver</h3>
+              <p class="text-white/80 leading-relaxed text-center">An interactive tool that helps solve coding problems and mathematical puzzles with step-by-step solutions.</p>
+            </article>
           </div>
         </div>
       </section>
-      <div class="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] leading-[0]" aria-hidden="true">
-        <svg viewBox="0 0 1440 100" class="w-full h-[100px]"><path d="M0,80 C480,0 960,120 1440,40 L1440,100 L0,100 Z" class="fill-cyan-100"/></svg>
-      </div>
 
-      <!-- Contact -->
-      <section id="contacts" class="snap-start min-h-screen flex items-center scroll-mt-24">
+      <!-- Contact Section -->
+      <section id="contacts" class="min-h-screen flex items-center py-20">
         <div class="container mx-auto px-8">
           <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto">
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8">Contact</h2>
+            <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-8 text-center">Contact Me</h2>
             <div class="space-y-6">
-              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30">
+              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 text-center">
                 <p class="text-white/90 text-lg">
                   <span class="font-semibold">Email:</span> 
-                  <a class="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-300/50 hover:decoration-cyan-200 transition-all ml-2" href="mailto:sherwin@email.com">sherwin@email.com</a>
+                  <a class="text-space-purple hover:text-purple-300 underline decoration-space-purple/50 hover:decoration-purple-300 transition-all ml-2" href="mailto:sherwin@email.com">sherwin@email.com</a>
                 </p>
               </div>
-              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30">
+              <div class="bg-white/15 backdrop-blur-lg rounded-2xl p-6 border border-white/30 text-center">
                 <p class="text-white/90 text-lg">
                   <span class="font-semibold">LinkedIn:</span> 
-                  <a class="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-300/50 hover:decoration-cyan-200 transition-all ml-2" href="#" target="_blank">linkedin.com/in/sherwin</a>
+                  <a class="text-space-purple hover:text-purple-300 underline decoration-space-purple/50 hover:decoration-purple-300 transition-all ml-2" href="#" target="_blank">linkedin.com/in/sherwin</a>
                 </p>
               </div>
               <div class="text-center pt-4">
-                <p class="text-white/80 text-lg">Feel free to reach out for collaboration or just to say hi 🌊</p>
+                <p class="text-white/80 text-lg">Feel free to reach out for collaboration or just to say hi 🚀</p>
               </div>
             </div>
           </div>
@@ -257,24 +287,12 @@
       </section>
     </main>
 
-    <!-- Audio Section -->
-    <section class="py-16">
-      <div class="container mx-auto px-8">
-        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl max-w-2xl mx-auto text-center">
-          <h2 class="font-display text-2xl md:text-3xl font-bold text-white mb-6">My Theme Song</h2>
-          <audio class="w-full max-w-xl mx-auto bg-white/20 rounded-xl" controls>
-            <source src="asset/sound.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
-      </div>
-    </section>
-
     <footer class="bg-black/20 backdrop-blur-lg border-t border-white/10 text-white py-8">
       <div class="container mx-auto px-8 text-center">
-        <p class="text-white/80">© 2024 Sherwin's Portfolio. Template by Graham Budd - Cheers, mate 🤙</p>
+        <p class="text-white/80">© 2024 Sherwin's Projects - High School Coder 🚀</p>
       </div>
     </footer>
+    
     <button id="backToTop" aria-label="Back to top" class="hidden fixed bottom-6 right-6 h-14 w-14 rounded-full bg-white/20 backdrop-blur-lg text-white shadow-2xl hover:bg-white/30 hover:scale-110 transition-all duration-300 grid place-items-center border border-white/30 text-xl">↑</button>
 
     <script>
@@ -285,25 +303,6 @@
         else btn.classList.add('hidden');
       });
       btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-      // Highlight active nav button based on section in view
-      const sections = [
-        { id: 'about', btn: document.getElementById('btn-about') },
-        { id: 'projects', btn: document.getElementById('btn-projects') },
-        { id: 'contacts', btn: document.getElementById('btn-contacts') },
-      ];
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const match = sections.find(s => s.id === entry.target.id);
-          if (!match) return;
-          if (entry.isIntersecting) {
-            sections.forEach(s => s.btn.classList.remove('ring-2','ring-white/70'));
-            match.btn.classList.add('ring-2','ring-white/70');
-            match.btn.setAttribute('aria-current','page');
-          }
-        })
-      }, { root: null, threshold: 0.6 });
-      sections.forEach(s => observer.observe(document.getElementById(s.id)));
     </script>
   </body>
 </html>
